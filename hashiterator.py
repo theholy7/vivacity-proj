@@ -1,4 +1,7 @@
 import hashlib
+import logging
+
+logger = logging.getLogger(__name__)
 
 def md5_string(word):
     return hashlib.md5(("{}".format(word)).encode('utf-8')).hexdigest()
@@ -76,7 +79,7 @@ def find_zero_collision_from_salt(salt, number_of_zeros):
 
             password[number] = collected_char
             pass_set = set(password)
-            print(collected_char)
+            logger.info(collected_char)
 
             if '-' not in pass_set:
                 password_not_found = False
@@ -85,5 +88,8 @@ def find_zero_collision_from_salt(salt, number_of_zeros):
 
 
     collision_output = "".join(password)
+
+    with open("output_{}_{}".format(salt, number_of_zeros), 'w') as f:
+        f.write(collision_output)
 
     return collision_output
