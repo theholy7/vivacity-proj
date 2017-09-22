@@ -43,6 +43,39 @@ def map_to_str(_map):
     return "\n".join(_map) + '\n'
 
 
+def string_to_map(text):
+    text = text.strip('\n')
+    return text.split('\n')
+
+
+def set_start_on_map(_map, x, y):
+
+    _map[y] = _map[y][:x] + 'S' + _map[y][x + 1:]
+
+    return _map
+
+
+def set_exit_on_map(_map, x, y):
+
+    _map[y] = _map[y][:x] + 'E' + _map[y][x + 1:]
+
+    return _map
+
+
+def set_road_on_map(_map, cell_list):
+
+    for cell in cell_list:
+        _map[cell[1]] = _map[cell[1]][:cell[0]] + 'O' + _map[cell[1]][cell[0] + 1:]
+
+    return _map
+
+
+def is_wall(_map, x, y):
+    if _map[y][x] == 'x':
+        return True
+    return False
+
+
 def parse_and_create_map(coordinates_directory):
     """Parses files in the input directory into a map
         then saves this to a file location and returns it.
