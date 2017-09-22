@@ -1,0 +1,9 @@
+Make a standard virtual env with python 3.6.2
+
+Install requirements
+
+Everything should run as expected
+
+to run tests:
+cd vivacity/
+python -m unittest tests
