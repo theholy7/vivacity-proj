@@ -29,15 +29,15 @@ class MapCreatorTests(unittest.TestCase):
     expected_map = '......\n....x.\n.x...x\n'
     test_mapcreate_directory = './test_files/mapcreator_test_files'
     map_output = mapcreator.parse_and_create_map(test_mapcreate_directory)
-    
+
     self.failUnless(map_output == expected_map)
 
 class PathFindingTests(unittest.TestCase):
-    
+
   def test_path_between_points(self):
     expected_path = 'OOOOx\nOxxOO\nSxxxE\n..x..\n..x..\n'
     test_mapcreate_file = './test_files/pathfinding_test_files/pathFindingTestMap.txt'
-    path_output = pathfinding.path_between_points(0, 2, 5, 2, test_mapcreate_file)
+    path_output = pathfinding.path_between_points(0, 2, 4, 2, test_mapcreate_file)
 
     self.failUnless(path_output == expected_path)
 
